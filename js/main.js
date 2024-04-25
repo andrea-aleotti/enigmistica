@@ -20,10 +20,10 @@ function createSudoku() {
     let html = "";
     html += `<div class="board">`;
     for (let i = 0; i < (grid * grid); i++) {
-        html += `<div class="cell c${i}"></div>`;
+        html += `<div class="cell" id="c${i}" onclick="javascript:selectingCell(this)"></div>`;
     }
     html += `</div>`;
-    $("#sudoku_box").after(html);
+    $("#sudoku_box_wrapper").append(html);
 
     addNumbers(difficult);
 
@@ -78,4 +78,24 @@ function addNumbers(difficulty) {
             filledCount++;
         }
     }
+}
+
+function selectingCell(el) {
+
+    if ($(".cell_selected")){
+
+        if ($(".cell_selected").attr("id") == $(el).attr("id")) {
+
+            $(".cell_selected").removeClass("cell_selected");
+            $("#selected_cell span").text(`Nessuna cella selezionata`);
+            $("#canvas_box_container").addClass("hide");
+            return;
+        }
+        
+        $(".cell_selected").removeClass("cell_selected");
+    }
+
+    $(el).addClass("cell_selected");
+    $("#selected_cell span").text(`Cella selezionata: ${$(el).attr("id")}`);
+    $("#canvas_box_container").removeClass("hide");
 }
