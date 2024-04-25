@@ -46,13 +46,13 @@
             <div id="canvas_box_container" class="hide">
                 <div id="canvas_box" class="canvas-box"></div>
                 <div id="canvas_button_box">
-                    <div id="clear-button" class="btn btn-style">
+                    <div id="clear-button" class="btn-style">
                         <span>Clear</span>
                     </div>
-                    <div id="predict-button" class="btn btn-style">
+                    <div id="predict-button" class="btn-style">
                         <span>Confirm</span>
                     </div>
-                    <div id="back-home" class="btn btn-style">
+                    <div id="back-home" class="btn-style">
                         <span>Home</span>
                     </div>
                 </div>
@@ -73,7 +73,7 @@
 
         $("#back-home").on("click", function() {
             if (confirm("Sei sicuro di voler uscire dalla partita?")) {
-                location.href = "/";
+                location.href = "index.html";
             }
         })
     </script>
