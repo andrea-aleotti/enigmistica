@@ -45,12 +45,15 @@
 
             <div id="canvas_box_container" class="hide">
                 <div id="canvas_box" class="canvas-box"></div>
-                <div>
-                    <div>
-                        <button id="clear-button" class="">Clear</button>
+                <div id="canvas_button_box">
+                    <div id="clear-button" class="btn">
+                        <span>Clear</span>
                     </div>
-                    <div>
-                        <button id="predict-button" class="">Confirm</button>
+                    <div id="predict-button" class="btn">
+                        <span>Confirm</span>
+                    </div>
+                    <div id="back-home" class="btn">
+                        <span>Home</span>
                     </div>
                 </div>
             </div>
@@ -66,6 +69,12 @@
 
         $("#difficult-choose .btn").on("click", function(el) {
             setDifficult($(el.currentTarget).attr("data-difficult"))
+        })
+
+        $("#back-home").on("click", function() {
+            if (confirm("Sei sicuro di voler uscire dalla partita?")) {
+                location.href = "/";
+            }
         })
     </script>
 </body>
