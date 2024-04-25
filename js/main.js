@@ -51,32 +51,90 @@ function addNumbers(difficulty) {
     // Get all cells
     const cells = document.querySelectorAll('.cell');
 
-    // Create an array to hold the numbers already added to each group
-    const rows = new Array(9).fill(null).map(() => new Set());
-    const columns = new Array(9).fill(null).map(() => new Set());
-    const boxes = new Array(9).fill(null).map(() => new Set());
+    // Generate a valid Sudoku puzzle
+    generateSudoku(cells);
 
-    // Fill cells with valid numbers
-    let filledCount = 0;
-    while (filledCount < fillCount) {
-        const randomIndex = Math.floor(Math.random() * cells.length);
-        const cell = cells[randomIndex];
-        const row = Math.floor(randomIndex / 9);
-        const column = randomIndex % 9;
-        const box = Math.floor(row / 3) * 3 + Math.floor(column / 3);
-        
-        // Generate a random number between 1 and 9
-        const randomNumber = Math.floor(Math.random() * 9) + 1;
+    // Remove numbers to achieve the desired difficulty level
+    removeNumbers(cells, fillCount);
+}
 
-        // Check if the generated number is valid
-        if (!rows[row].has(randomNumber) && !columns[column].has(randomNumber) && !boxes[box].has(randomNumber)) {
-            // The number is not already used in the row, column, or box
-            rows[row].add(randomNumber);
-            columns[column].add(randomNumber);
-            boxes[box].add(randomNumber);
-            cell.innerText = randomNumber;
-            filledCount++;
+function generateSudoku(cells) {
+    const board = new Array(9).fill(null).map(() => new Array(9).fill(0));
+    solveSudoku(board);
+    // Fill cells with the generated Sudoku puzzle
+    for (let row = 0; row < 9; row++) {
+        for (let col = 0; col < 9; col++) {
+            const cell = cells[row * 9 + col];
+            cell.innerText = board[row][col];
         }
+    }
+}
+
+function solveSudoku(board) {
+    const emptyCell = findEmptyCell(board);
+    if (!emptyCell) {
+        // All cells are filled, puzzle is solved
+        return true;
+    }
+    const [row, col] = emptyCell;
+    for (let num = 1; num <= 9; num++) {
+        if (isValidMove(board, row, col, num)) {
+            board[row][col] = num;
+            if (solveSudoku(board)) {
+                return true;
+            }
+            // Backtrack
+            board[row][col] = 0;
+        }
+    }
+    return false;
+}
+
+function findEmptyCell(board) {
+    for (let row = 0; row < 9; row++) {
+        for (let col = 0; col < 9; col++) {
+            if (board[row][col] === 0) {
+                return [row, col];
+            }
+        }
+    }
+    return null;
+}
+
+function isValidMove(board, row, col, num) {
+    // Check row
+    for (let i = 0; i < 9; i++) {
+        if (board[row][i] === num) {
+            return false;
+        }
+    }
+    // Check column
+    for (let i = 0; i < 9; i++) {
+        if (board[i][col] === num) {
+            return false;
+        }
+    }
+    // Check 3x3 box
+    const startRow = Math.floor(row / 3) * 3;
+    const startCol = Math.floor(col / 3) * 3;
+    for (let i = 0; i < 3; i++) {
+        for (let j = 0; j < 3; j++) {
+            if (board[startRow + i][startCol + j] === num) {
+                return false;
+            }
+        }
+    }
+    return true;
+}
+
+function removeNumbers(cells, fillCount) {
+    const indices = Array.from({ length: 81 }, (_, index) => index);
+    for (let i = 0; i < 81 - fillCount; i++) {
+        const randomIndex = Math.floor(Math.random() * indices.length);
+        const index = indices[randomIndex];
+        const cell = cells[index];
+        cell.innerText = '';
+        indices.splice(randomIndex, 1);
     }
 }
 
