@@ -233,7 +233,6 @@ $("#predict-button").click(async function () {
 	//displayChart(results);
 	displayLabel(results);
 
-	console.log(results);
 });
 
 //------------------------------
@@ -285,15 +284,15 @@ function loadChart(label, data, modelSelected) {
 function displayLabel(data) {
 	var max = data[0];
     var maxIndex = 0;
-	console.log(data);
-	console.log(max);
-	console.log(maxIndex);
-    /* for (var i = 1; i < data.length; i++) {
-        if (data[i] > max) {
-            maxIndex = i;
+    for (var i = 1; i < data.length; i++) {
+		if (data[i] > max) {
+			maxIndex = i;
             max = data[i];
         }
     }
-	$(".prediction-text").html("Predicting you draw <b>"+maxIndex+"</b> with <b>"+Math.trunc( max*100 )+"%</b> confidence") */
+	
+	console.log(max);
+	console.log(maxIndex);
+	/* $(".prediction-text").html("Predicting you draw <b>"+maxIndex+"</b> with <b>"+Math.trunc( max*100 )+"%</b> confidence") */
 }
 
