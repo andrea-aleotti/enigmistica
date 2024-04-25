@@ -30,12 +30,16 @@ body {
 .btn {
     width: 50vw;
     height: 8vh;
+}
+
+.btn-style {
+    margin: 1% 0;
     display: flex;
     justify-content: center;
     align-items: center;
     border: 1px solid black;
     border-radius: 20px;
-}
+} 
 
 #main {
     width: 100%;
