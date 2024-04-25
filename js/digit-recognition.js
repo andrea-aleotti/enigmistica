@@ -3,8 +3,8 @@
 //-------------------
 let model;
 
-var canvasWidth           	= "100%";
-var canvasHeight 			= "100%";
+var canvasWidth           	= 250;
+var canvasHeight 			= 250;
 var canvasStrokeStyle		= "white";
 var canvasLineJoin			= "round";
 var canvasLineWidth       	= 10;
