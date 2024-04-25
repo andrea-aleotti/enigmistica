@@ -297,5 +297,6 @@ function displayLabel(data) {
 
 	let selected_cell = $("#selected_cell").attr("data-cell");
 	$(`#${selected_cell}`).text(maxIndex);
+	$("#clear-button").click();
 }
 
