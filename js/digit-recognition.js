@@ -295,8 +295,10 @@ function displayLabel(data) {
 	console.log(maxIndex);
 	/* $(".prediction-text").html("Predicting you draw <b>"+maxIndex+"</b> with <b>"+Math.trunc( max*100 )+"%</b> confidence") */
 
-	let selected_cell = $("#selected_cell").attr("data-cell");
-	$(`#${selected_cell}`).text(maxIndex);
-	$("#clear-button").click();
+	if ($("#selected_cell").attr("data-cell")) {
+		let selected_cell = $("#selected_cell").attr("data-cell");
+		$(`#${selected_cell}`).text(maxIndex);
+		$("#clear-button").click();
+	}
 }
 
