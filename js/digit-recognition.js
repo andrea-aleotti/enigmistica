@@ -239,7 +239,7 @@ $("#predict-button").click(async function () {
 //------------------------------
 // Chart to display predictions
 //------------------------------
-var chart = "";
+/* var chart = "";
 var firstTime = 0;
 function loadChart(label, data, modelSelected) {
 	var ctx = document.getElementById('chart_box').getContext('2d');
@@ -261,13 +261,13 @@ function loadChart(label, data, modelSelected) {
 	    // Configuration options go here
 	    options: {}
 	});
-}
+} */
 
 //----------------------------
 // display chart with updated
 // drawing from canvas
 //----------------------------
-function displayChart(data) {
+/* function displayChart(data) {
 	var select_model  = document.getElementById("select_model");
   	var select_option = "CNN";
 
@@ -280,7 +280,7 @@ function displayChart(data) {
 		loadChart(label, data, select_option);
 	}
 	document.getElementById('chart_box').style.display = "block";
-}
+} */
 
 function displayLabel(data) {
 	var max = data[0];
