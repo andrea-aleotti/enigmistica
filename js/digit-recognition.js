@@ -229,8 +229,8 @@ $("#predict-button").click(async function () {
 	let results = Array.from(predictions);
 
 	// display the predictions in chart
-	$("#result_box").removeClass('d-none');
-	displayChart(results);
+	//$("#result_box").removeClass('d-none');
+	//displayChart(results);
 	displayLabel(results);
 
 	console.log(results);
@@ -285,13 +285,15 @@ function displayChart(data) {
 function displayLabel(data) {
 	var max = data[0];
     var maxIndex = 0;
-
-    for (var i = 1; i < data.length; i++) {
+	console.log(data);
+	console.log(max);
+	console.log(maxIndex);
+    /* for (var i = 1; i < data.length; i++) {
         if (data[i] > max) {
             maxIndex = i;
             max = data[i];
         }
     }
-	$(".prediction-text").html("Predicting you draw <b>"+maxIndex+"</b> with <b>"+Math.trunc( max*100 )+"%</b> confidence")
+	$(".prediction-text").html("Predicting you draw <b>"+maxIndex+"</b> with <b>"+Math.trunc( max*100 )+"%</b> confidence") */
 }
 
