@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sudoku</title>
+
+    <link rel="stylesheet" href="./css/style.css">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<script src="./js/chart.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest"></script>
+	<script src="./js/main.js"></script>
+
+</head>
+<body>
+    
+    <div id="grid-choose">
+        <div class="btn" data-grid="9">
+            <span>9x9</span>
+        </div>
+    </div>
+
+    <div id="difficult-choose" class="hide">
+        <div class="btn" data-difficult="easy">
+            <span>Easy</span>
+        </div>
+        <div class="btn" data-difficult="medium">
+            <span>Medium</span>
+        </div>
+        <div class="btn" data-difficult="difficult">
+            <span>Difficult</span>
+        </div>
+    </div>
+
+    <div id="main" class="hide">
+
+        <div id="sudoku_box_wrapper" class="sudoku-box-wrapper">
+            <div id="sudoku_box" class="sudoku-box"></div>
+        </div>
+
+        <div id="canvas_box_wrapper" class="canvas-box-wrapper">
+            <div id="canvas_box" class="canvas-box"></div>
+            <div class="col-12">
+                <button id="clear-button" class="btn btn-dark">Clear</button>
+            </div>
+            <div class="col-12">
+                <button id="predict-button" class="btn btn-dark">Confirm</button>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="./js/digit-recognition.js"></script>
+    <script>
+        $("#grid-choose .btn").on("click", function(el) {
+            setGrid($(el.currentTarget).attr("data-grid"))
+        })
+
+        $("#difficult-choose .btn").on("click", function(el) {
+            setDifficult($(el.currentTarget).attr("data-difficult"))
+        })
+    </script>
+</body>
+</html>
