@@ -96,6 +96,7 @@ function selectingCell(el) {
     }
 
     $(el).addClass("cell_selected");
+    $("#selected_cell").attr("data-cell", $(el).attr("id"));
     $("#selected_cell span").text(`Cella selezionata: ${$(el).attr("id")}`);
     $("#canvas_box_container").removeClass("hide");
 }
