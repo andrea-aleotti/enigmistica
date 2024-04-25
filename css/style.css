@@ -45,12 +45,12 @@ body {
 
 #sudoku_box_wrapper {
     width: 100%;
-    height: 70%;
+    height: fit-content;
 } 
 
 #canvas_box_wrapper {
     width: 100%;
-    height: 30%;
+    height: fit-content;
 }
 
 .board {
