@@ -146,7 +146,6 @@ function selectingCell(el) {
 
             $(".cell_selected").removeClass("cell_selected");
             $("#selected_cell span").text(`Nessuna cella selezionata`);
-            $("#canvas_box_container").addClass("hide");
             return;
         }
         
